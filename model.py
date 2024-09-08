@@ -68,7 +68,7 @@ def inference(model, file, transform, classes):
         # plt.show()
 
 
-model = load_model('../Desktop/classifier.pt')
+model = load_model('./classifier.pt')
 print("Model loaded Succesfully")
 classes = ['No DR', 'Mild', 'Moderate', 'Severe', 'Proliferative DR']
 test_transforms = torchvision.transforms.Compose([
@@ -95,3 +95,7 @@ def main(path):
 #             inference(model, path, test_transforms, classes)
 #     else:
 #         print('please provide the exact path of image !')
+if __name__ == '__main__':
+    x, y = main("F:/wei/Retinal_blindness_detection_Pytorch/sampleimages/d659d7fd5ccf.png");
+    print(x)
+    print(y)

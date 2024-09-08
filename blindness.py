@@ -9,6 +9,8 @@ import mysql.connector
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 import mysql.connector as sk
 from model import *
+from resnextmodel import resnextmain
+
 #from send_sms import *
 print('GUI SYSTEM STARTED...')
 #---------------------------------------------------------------------------------
@@ -58,7 +60,7 @@ def OpenFile():
         try:
             a = askopenfilename()
             print(a)
-            value, classes = main(a)
+            value, classes = resnextmain(a)
             messagebox.showinfo("your report", ("Predicted Label is ", value, "\nPredicted Class is ", classes))
 
             query = 'UPDATE THEGREAT SET PREDICT = "%s" WHERE USERNAME = "%s"'%(value, username)
@@ -80,6 +82,7 @@ def OpenFile():
             print('Thanks for using the system !')
             #fn, text = os.path.splitext(a) #fn stands for filename
         except Exception as error:
+            print(error)
             print("File not selected ! Exiting..., Please try again")
 
 
@@ -136,18 +139,18 @@ sql = connection.cursor()
 root = Tk()
 
 root.geometry('700x400')
-root.title("SK's Blindness Detection System")
-root.configure(bg='pale turquoise')
+root.title("The Blindness Detection System")
+root.configure(bg='#ADD8E6')
 
 
-label1 = Label(root, text="Demo for BDS", font=('Arial', 30))
+label1 = Label(root, text="BDS Demo", font=('Arial', 30))
 label1.grid(padx=30, pady=30, row=0, column=0, sticky='W')
 
-label2 = Label(root, text="Enter your username: ", font=('Arial', 20))
-label2.grid(padx=10, pady=10, row=1, column=0, sticky='W')
+label2 = Label(root, text="username: ", font=('Arial', 20))
+label2.grid(padx=80, pady=10, row=1, column=0, sticky='W')
 
-label3 = Label(root, text="Enter your password: ", font=('Arial', 20))
-label3.grid(padx=10, pady=20, row=2, column=0, sticky='W')
+label3 = Label(root, text="password: ", font=('Arial', 20))
+label3.grid(padx=80, pady=20, row=2, column=0, sticky='W')
 
 box1 = Entry(root)
 box1.grid(row=1, column=1)
